@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -7,7 +7,7 @@
     content="LightGaussian efficiently compresses 3D scene data, enhancing performance and reducing storage needs while preserving visual quality.">
   <meta name="keywords" content="LightGaussian, lightgaussian, Gaussian Splatting, Gaussian">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</title>
+  <title>GSORB-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -88,12 +88,12 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><span style="color: #e25757;font-weight: bolder;">GS-SLAM</span>: Dense Visual SLAM with 3D Gaussian Splatting
+            <h1 class="title is-1 publication-title"><span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>: Dense Visual SLAM with 3D Gaussian Splatting
             </h1>
-            <h3 class="title is-4 conference-authors"><a target="_blank" href="https://cvpr.thecvf.com/">CVPR 2024 (highlight)</a></h3>
+            <h3 class="title is-4 conference-authors"><a target="_blank" href="https://cvpr.thecvf.com/">--</a></h3>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://npu-yanchi.github.io/">Chi Yan</a><sup>1,3</sup><sup>*</sup>,</span>
+                <a href="https://npu-yanchi.github.io/">Wancai Zheng</a><sup>1,3</sup>,</span>
               <span class="author-block">
                 <a href="https://delinqu.github.io/">Delin Qu</a><sup>1,2</sup><sup>*</sup>,</span>
               <span class="author-block">
@@ -259,11 +259,18 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Overview</h2>
           <div class="content has-text-justified">
-            <img src="./static/images/head3.png">
+            <img src="./static/images/pipline.png">
             <p>
-              In this paper, we introduce <span style="color: #e89292;font-weight: bolder;">GS-SLAM</span> 
-              that first utilizes 3D Gaussian representation in the Simultaneous Localization and Mapping (SLAM) system. 
-              It facilitates a better balance between efficiency and accuracy. Compared to recent SLAM methods employing neural implicit representations, our method utilizes a real-time differentiable splatting rendering pipeline that offers significant speedup to map optimization and RGB-D rendering. Specifically, we propose an adaptive expansion strategy that adds new or deletes noisy 3D Gaussians in order to efficiently reconstruct new observed scene geometry and improve the mapping of previously observed areas. This strategy is essential to extend 3D Gaussian representation to reconstruct the whole scene rather than synthesize a static object in existing methods. Moreover, in the pose tracking process, an effective coarse-to-fine technique is designed to select reliable 3D Gaussian representations to optimize camera pose, resulting in runtime reduction and robust estimation. Our method achieves competitive performance compared with existing state-of-the-art real-time methods on the Replica, TUM-RGBD datasets.        </p>
+                In this paper, we introduce <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>
+                that tightly couples 3D Gaussian representation
+                with ORB features in the Simultaneous Localization and Mapping (SLAM) system.
+                We design a joint optimization approach for robust tracking and effectively reducing the impact of noise and artifacts.
+                This involves combining novel geometric observations, derived from accumulated transmittance, with ORB features extracted from pixel data.
+                Furthermore, to improve mapping quality, we propose an adaptive Gaussian expansion and regularization method that enables Gaussian primitives to represent the scene compactly.
+                This is coupled with a viewpoint selection strategy based on the hybrid graph to mitigate over-fitting effects and enhance convergence quality.
+                Finally, our approach achieves compact and high-quality scene representations and accurate localization.
+                GSORB-SLAM has been evaluated on different datasets, demonstrating outstanding performance.
+            </p>
           </div>
         </div>
       </div>
@@ -287,43 +294,56 @@
 
 
 
-
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Concurrent Work. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Method Overview</h2>
-          <div class="content has-text-justified">
-            <img src="./static/images/pipeline.png">
-            <p><strong>Overview of the proposed method.</strong>
-              We aim to use 3D Gaussians to represent the scene and use the rendered RGB-D image for
-              inverse camera tracking. <span style="color: #e89292;font-weight: bolder;">GS-SLAM</span> proposes a novel Gaussian expansion strategy to make the 3D Gaussian feasible to reconstruct the
-              whole scene. For camera tracking of every input frame, we derive an analytical formula for backward optimization with re-rendering RGB-D loss, and further introduce an effective coarse-to-fine technique to minimize 
-              re-rendering losses to achieve efficient and accurate pose estimation. <span style="color: #e89292;font-weight: bolder;">GS-SLAM</span> can achieve real-time tracking, mapping, and rendering performance on GPU.</p>
+  <section class="hero is-small is-light">
+      <div class="hero-body">
+          <div class="columns is-centered has-text-centered">
+              <div class="column">
+                  <h2 class="title is-3">Replica Room 0 Novel View Renderings</h2>
+                  <p></p>
+              </div>
           </div>
-        </div>
-      </div>
-      <!--/ Concurrent Work. -->
 
-    </div>
+          <div class="container is-max-desktop">
+              <div class="columns is-centered">
+
+                  <div class="column has-text-centered">
+                      <div class="content">
+                          <h2 class="title is-5">Nice-SLAM</h2>
+                          <video id="ns_r0" autoplay controls muted loop playsinline height="100%">
+                              <source src="./data/replica_nvs/nice_slam/room0_rgb_ns.mp4"
+                                      type="video/mp4">
+                          </video>
+                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                      </div>
+                  </div>
+
+                  <div class="column has-text-centered">
+                      <div class="content">
+                          <h2 class="title is-5">Point-SLAM</h2>
+                          <video id="ps_r0" autoplay controls muted loop playsinline height="100%">
+                              <source src="./data/replica_nvs/point_slam/room0_rgb_ps.mp4"
+                                      type="video/mp4">
+                          </video>
+                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                      </div>
+                  </div>
+
+                  <div class="column has-text-centered">
+                      <div class="content">
+                          <h2 class="title is-5">SplaTAM</h2>
+                          <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                              <source src="./data/replica_nvs/splatam/room_0_rgb.mp4"
+                                      type="video/mp4">
+                          </video>
+                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                      </div>
+                  </div>
+              </div>
+
+              
   </section>
 
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Tracking Result</h2>
-          <div class="content has-text-justified">
-            <img src="./static/images/tracking.png">
-            <p>Result on Replica dataset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result on TUM-RGBD dataset</p>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 
   <section class="section">
     <div class="container ">
@@ -343,7 +363,7 @@
                   <div id="example1" class="bal-container-small">
 
                     <div class="bal-after">
-                      <img src="./static/images/render/our_nice_slam_render.png">
+                      <img src="./static/images/render/r0_gsorb.png">
                       <div class="bal-afterPosition afterLabel" style="z-index:1;">
                         Ours
                       </div>
@@ -351,9 +371,9 @@
 
                     <div class="bal-before" style="width:96.4968152866242%;">
                       <div class="bal-before-inset" style="width: 539px;">
-                        <img src="./static/images/render/nice_slam_render.png">
+                        <img src="./static/images/render/r0_splatam.png">
                         <div class="bal-beforePosition beforeLabel">
-                          NICE-SLAM
+                          SplaTAM
                         </div>
                       </div>
                     </div>
@@ -369,7 +389,7 @@
                   <div id="example2" class="bal-container-small">
 
                     <div class="bal-after">
-                      <img src="./static/images/render/our_co_slam_render.jpg">
+                      <img src="./static/images/render/of3_gsorb.png">
                       <div class="bal-afterPosition afterLabel">
                         Ours
                       </div>
@@ -377,9 +397,9 @@
 
                     <div class="bal-before" style="width: 50%;">
                       <div class="bal-before-inset" style="width: 539px;">
-                        <img src="./static/images/render/co_slam_render.jpg">
+                        <img src="./static/images/render/of3_splatam.png">
                         <div class="bal-beforePosition beforeLabel">
-                          Co-SLAM
+                            SplaTAM
                         </div>
                       </div>
                     </div>
@@ -403,7 +423,7 @@
 
                 <div id="example4" class="bal-container-small">
                   <div class="bal-after">
-                    <img src="./static/images/render/our_point_slam_render.png">
+                    <img src="./static/images/render/r1_gsorb.png">
                     <div class="bal-afterPosition afterLabel" style="z-index:1;">
                       Ours
                     </div>
@@ -411,9 +431,9 @@
 
                   <div class="bal-before" style="width:62.10191082802548%;">
                     <div class="bal-before-inset" style="width: 539px;">
-                      <img src="./static/images/render/point_slam_render.png">
+                      <img src="./static/images/render/r1_splatam.png">
                       <div class="bal-beforePosition beforeLabel">
-                        Point-SLAM
+                         SplaTAM
                       </div>
                     </div>
                   </div>
@@ -427,7 +447,7 @@
 
                 <div id="example5" class="bal-container-small">
                   <div class="bal-after">
-                    <img src="./static/images/render/our_e_slam_render.jpg">
+                    <img src="./static/images/render/of4_gsorb.png">
                     <div class="bal-afterPosition afterLabel" style="z-index:1;">
                       Ours
                     </div>
@@ -435,9 +455,9 @@
 
                   <div class="bal-before" style="width:56.77179962894249%;">
                     <div class="bal-before-inset" style="width: 628px;">
-                      <img src="./static/images/render/e_slam_render.jpg">
+                      <img src="./static/images/render/of4_splatam.png">
                       <div class="bal-beforePosition beforeLabel">
-                        ESLAM
+                        SplaTAM
                       </div>
                     </div>
                   </div>
@@ -480,10 +500,40 @@
         <div class="column is-full-width">
           <div class="content has-text-justified">
             <img src="./static/images/render/total_render.png">
-            <p>Result on Replica dataset. We outperform existing dense neural RGB-D methods on the commonly reported
-              rendering metrics. Note that GS-SLAM achieves 386 FPS on average, benefitting from the efficient 3DGS scene representation.</p>
+            <p>The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM 
+              and 3DGS-SLAM methods on the commonly reported rendering metrics.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Tracking Result</h2>
+          <div class="content has-text-justified">
+              <img src="./static/images/tracking/total_tracking.png">
+              <p>The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.</p>
+
+              <div class="container is-max-desktop">
+                  <!-- Abstract. -->
+                  <div class="columns is-centered has-text-centered">
+                      <div class="column is-four-fifths">
+                          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Surface depth VS. Depth</h2>
+                          <div class="content has-text-justified">
+                              <img src="./static/images/tracking/surface_tracking.png">
+                              <p>
+                                  Surface depth not only improves tracking real-time performance but also enhances localization accuracy.
+                              </p>
+                          </div>
+                      </div>
+                  </div>
+
+                  
+              </div>
+          </div>
       </div>
     </div>
   </section>
