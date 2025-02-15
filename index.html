@@ -7,7 +7,7 @@
     content="LightGaussian efficiently compresses 3D scene data, enhancing performance and reducing storage needs while preserving visual quality.">
   <meta name="keywords" content="LightGaussian, lightgaussian, Gaussian Splatting, Gaussian">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GSORB-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</title>
+  <title>GSORB-SLAM: Gaussian Splatting SLAM benefits from ORB features and Transmittance information</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -44,562 +44,668 @@
 
 <body>
 
-  <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-  <div class="navbar-menu">
-    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
-      <a class="navbar-item" href="">
-      <span class="icon">
-          <i class="fas fa-home"></i>
-      </span>
-      </a>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More Research
+    <!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="https://hypernerf.github.io">
-            HyperNeRF
-          </a>
-          <a class="navbar-item" href="https://nerfies.github.io">
-            Nerfies
-          </a>
-          <a class="navbar-item" href="https://latentfusion.github.io">
-            LatentFusion
-          </a>
-          <a class="navbar-item" href="https://photoshape.github.io">
-            PhotoShape
-          </a>
-        </div>
       </div>
-    </div>
-  </div>
-</nav> -->
-
-
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>: Dense Visual SLAM with 3D Gaussian Splatting
-            </h1>
-            <h3 class="title is-4 conference-authors"><a target="_blank" href="https://cvpr.thecvf.com/">--</a></h3>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <a href="https://npu-yanchi.github.io/">Wancai Zheng</a><sup>1,3</sup>,</span>
-              <span class="author-block">
-                <a href="https://delinqu.github.io/">Delin Qu</a><sup>1,2</sup><sup>*</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.danxurgb.net/">Dan Xu</a><sup>3</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=DQB0hqwAAAAJ&hl=en">Bin Zhao</a><sup>1,4</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?hl=zh-CN&user=cw3EaAYAAAAJ&view_op=list_works&sortby=pubdate">Zhigang Wang</a><sup>1</sup>,</span>
-              <span class="author-block">
-                  <a href="https://scholar.google.es/citations?user=dasL9V4AAAAJ">Dong Wang</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=ahUibskAAAAJ&hl=zh-CN&oi=ao">Xuelong Li</a><sup>1,5</sup></span>
-            </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Shanghai AI Laboratory</span>
-              <span class="author-block"><sup>2</sup>Fudan University</span> 
-              <span class="author-block"><sup>3</sup>Hong Kong University of Science and Technology</span> <br>
-              <span class="author-block"><sup>4</sup>Northwestern Polytechnical University</span> 
-              <span class="author-block"><sup>5</sup>Institute of Artificial Intelligence, China Telecom Corp Ltd</span>
-              <span class="author-block"><sup>*</sup>denotes equal contribution</span>
-            </div>
-            <!-- TODO: update paper and video link once upload -->
-            <div class="column has-text-centered">
-              <!-- <div class="publication-links"> -->
-                <!-- PDF Link. -->
-                <span class="link-block">
-                <a href="https://arxiv.org/pdf/2311.11700.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-                </span>
-                <!-- <span class="link-block">
-                <a href="https://arxiv.org/abs/2311.11700"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
-                <!-- Video Link.
-                <span class="link-block">
-                  <a href="https://youtu.be/470hul75bSM" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                    </span>
-                    <span>Video</span>
-                  </a>
-                </span> -->
-                <!-- Code Link. -->
-                <!-- <span class="link-block">
-                  <button class="external-link button is-normal is-rounded is-dark" disabled>
-                      <span class="icon">
-                          <i class="fab fa-github"></i>
-                      </span>
-                      <span>Code(Coming Soon)</span>
-                  </button>
-              </span> -->
-                <!-- Code Link. -->
-                <span class="link-block">
-                  <a href="https://github.com/NPU-YanChi/diff-gaussian-rasterization-for-gsslam"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Modified Rasterization Code</span>
-                  </a>
-                </span>
-              </div>
-
+      <div class="navbar-menu">
+        <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+          <a class="navbar-item" href="">
+          <span class="icon">
+              <i class="fas fa-home"></i>
+          </span>
+          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More Research
+            </a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="https://hypernerf.github.io">
+                HyperNeRF
+              </a>
+              <a class="navbar-item" href="https://nerfies.github.io">
+                Nerfies
+              </a>
+              <a class="navbar-item" href="https://latentfusion.github.io">
+                LatentFusion
+              </a>
+              <a class="navbar-item" href="https://photoshape.github.io">
+                PhotoShape
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- <section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/teaser.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-        free-viewpoint
-        portraits.
-      </h2>
-    </div>
-  </div>
-</section> -->
+    </nav> -->
 
 
-  <!-- <section class="hero is-light is-small">
-    <div class="hero-body">
-      <div class="container">
-        <div id="results-carousel" class=" carousel results-carousel">
-          <div class="item item-room">
-            <video poster="" id="room" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/room_video_comp3.mp4"
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">
+                            <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>: Gaussian Splatting SLAM benefits from ORB features and Transmittance information
+                        </h1>
+                        <h3 class="title is-4 conference-authors"><a target="_blank" href="https://cvpr.thecvf.com/">--</a></h3>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                Wancai Zheng</a>,
+                            </span>
+                            <span class="author-block">
+                                Xinyi Yu</a><sup>*</sup>,
+                            </span>
+                            <span class="author-block">
+                                Jintao Rong</a>,
+                            </span>
+                            <span class="author-block">
+                                Linlin Ou</a>,
+                            </span>
+                            <span class="author-block">
+                                Yan Wei</a>,
+                            </span>
+                            <span class="author-block">
+                                Libo Zhou</a>,
+                            </span>
+                            
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">Zhejiang University of Technology</span>
+                            <span class="author-block"><sup>*</sup>denotes equal contribution</span>
+                        </div>
+                        <!-- TODO: update paper and video link once upload -->
+                        <div class="column has-text-centered">
+                            <!-- <div class="publication-links"> -->
+                            <!-- PDF Link. -->
+                            <span class="link-block">
+                                <a href="https://arxiv.org/pdf/2311.11700.pdf"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <!-- <span class="link-block">
+                              <a href="https://arxiv.org/abs/2311.11700"
+                                 class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                    <i class="ai ai-arxiv"></i>
+                                </span>
+                                <span>arXiv</span>
+                              </a>
+                            </span> -->
+                            <!-- Video Link.
+                            <span class="link-block">
+                              <a href="https://youtu.be/470hul75bSM" class="external-link button is-normal is-rounded is-dark">
+                                <span class="icon">
+                                  <i class="fab fa-youtube"></i>
+                                </span>
+                                <span>Video</span>
+                              </a>
+                            </span> -->
+                            <!-- Code Link. -->
+                            <!-- <span class="link-block">
+                                <button class="external-link button is-normal is-rounded is-dark" disabled>
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code(Coming Soon)</span>
+                                </button>
+                            </span> -->
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/NPU-YanChi/diff-gaussian-rasterization-for-gsslam"
+                                   class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- <section class="hero teaser">
+      <div class="container is-max-desktop">
+        <div class="hero-body">
+          <video id="teaser" autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/teaser.mp4"
+                    type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
+            free-viewpoint
+            portraits.
+          </h2>
+        </div>
+      </div>
+    </section> -->
+    <!-- <section class="hero is-light is-small">
+      <div class="hero-body">
+        <div class="container">
+          <div id="results-carousel" class=" carousel results-carousel">
+            <div class="item item-room">
+              <video poster="" id="room" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/room_video_comp3.mp4"
+                        type="video/mp4">
+              </video>
+            </div>
+
+            <div class="item item-garden">
+              <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/garden_video_comp3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-bicycle">
+              <video poster="" id="bicycle" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/bicycle_video_comp3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-bonsai">
+              <video poster="" id="bonsai" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/bonsai_video_comp3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-counter">
+              <video poster="" id="counter" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/counter_video_comp3.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="item item-kitchen">
+              <video poster="" id="kitchen" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kitchen_video_comp3.mp4" type="video/mp4">
+              </video>
+            </div>
+          <div class="item item-train">
+            <video poster="" id="train" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/train_video_comp3.mp4"
                       type="video/mp4">
             </video>
           </div>
-  
-          <div class="item item-garden">
-            <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/garden_video_comp3.mp4" type="video/mp4">
+          <div class="item item-struck">
+            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/truck_video_comp3.mp4"
+                      type="video/mp4">
             </video>
           </div>
-          <div class="item item-bicycle">
-            <video poster="" id="bicycle" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/bicycle_video_comp3.mp4" type="video/mp4">
+          <div class="item item-stump">
+            <video poster="" id="stump" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/stump_video_comp3.mp4"
+                      type="video/mp4">
             </video>
           </div>
-          <div class="item item-bonsai">
-            <video poster="" id="bonsai" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/bonsai_video_comp3.mp4" type="video/mp4">
-            </video>
           </div>
-          <div class="item item-counter">
-            <video poster="" id="counter" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/counter_video_comp3.mp4" type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-kitchen">
-            <video poster="" id="kitchen" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/kitchen_video_comp3.mp4" type="video/mp4">
-            </video>
-          </div>
-        <div class="item item-train">
-          <video poster="" id="train" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/train_video_comp3.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-struck">
-          <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/truck_video_comp3.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-stump">
-          <video poster="" id="stump" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/stump_video_comp3.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        </div>
-        <p>The caption displays both the file size and the Structural Similarity Index (SSIM)</p>
-      </div>
-    </div>
-  </section> -->
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Overview</h2>
-          <div class="content has-text-justified">
-            <img src="./static/images/pipline.png">
-            <p>
-                In this paper, we introduce <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>
-                that tightly couples 3D Gaussian representation
-                with ORB features in the Simultaneous Localization and Mapping (SLAM) system.
-                We design a joint optimization approach for robust tracking and effectively reducing the impact of noise and artifacts.
-                This involves combining novel geometric observations, derived from accumulated transmittance, with ORB features extracted from pixel data.
-                Furthermore, to improve mapping quality, we propose an adaptive Gaussian expansion and regularization method that enables Gaussian primitives to represent the scene compactly.
-                This is coupled with a viewpoint selection strategy based on the hybrid graph to mitigate over-fitting effects and enhance convergence quality.
-                Finally, our approach achieves compact and high-quality scene representations and accurate localization.
-                GSORB-SLAM has been evaluated on different datasets, demonstrating outstanding performance.
-            </p>
-          </div>
+          <p>The caption displays both the file size and the Structural Similarity Index (SSIM)</p>
         </div>
       </div>
-      <!--/ Abstract. -->
-
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/470hul75bSM?si=7F9NL8zWbU9GtqHb"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; 
-           encrypted-media; " allowfullscreen></iframe>
-           
-          </div>
-        </div>
-      </div> -->
-    </div>
-  </section>
-
-
-
-
-  <section class="hero is-small is-light">
-      <div class="hero-body">
-          <div class="columns is-centered has-text-centered">
-              <div class="column">
-                  <h2 class="title is-3">Replica Room 0 Novel View Renderings</h2>
-                  <p></p>
-              </div>
-          </div>
-
-          <div class="container is-max-desktop">
-              <div class="columns is-centered">
-
-                  <div class="column has-text-centered">
-                      <div class="content">
-                          <h2 class="title is-5">Nice-SLAM</h2>
-                          <video id="ns_r0" autoplay controls muted loop playsinline height="100%">
-                              <source src="./data/replica_nvs/nice_slam/room0_rgb_ns.mp4"
-                                      type="video/mp4">
-                          </video>
-                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
-                      </div>
-                  </div>
-
-                  <div class="column has-text-centered">
-                      <div class="content">
-                          <h2 class="title is-5">Point-SLAM</h2>
-                          <video id="ps_r0" autoplay controls muted loop playsinline height="100%">
-                              <source src="./data/replica_nvs/point_slam/room0_rgb_ps.mp4"
-                                      type="video/mp4">
-                          </video>
-                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
-                      </div>
-                  </div>
-
-                  <div class="column has-text-centered">
-                      <div class="content">
-                          <h2 class="title is-5">SplaTAM</h2>
-                          <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
-                              <source src="./data/replica_nvs/splatam/room_0_rgb.mp4"
-                                      type="video/mp4">
-                          </video>
-                          <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
-                      </div>
-                  </div>
-              </div>
-
-              
-  </section>
-
-  
-
-  <section class="section">
-    <div class="container ">
-      <div class=" has-text-centered">
-        <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Render Comparisons</h2>
-        <div class="content has-text-justified">
-          <p>
-
-          </p>
-        </div>
-        <div class="columns is-centered">
-          <!-- Visual Effects. -->
-          <div class="column">
-            <div class="content">
-              <div class="columns is-centered">
-                <div class="column is-full-width">
-                  <div id="example1" class="bal-container-small">
-
-                    <div class="bal-after">
-                      <img src="./static/images/render/r0_gsorb.png">
-                      <div class="bal-afterPosition afterLabel" style="z-index:1;">
-                        Ours
-                      </div>
-                    </div>
-
-                    <div class="bal-before" style="width:96.4968152866242%;">
-                      <div class="bal-before-inset" style="width: 539px;">
-                        <img src="./static/images/render/r0_splatam.png">
-                        <div class="bal-beforePosition beforeLabel">
-                          SplaTAM
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="bal-handle" style="left:96.4968152866242%;">
-                      <span class=" handle-left-arrow"></span>
-                      <span class="handle-right-arrow"></span>
-                    </div>
-
-                  </div>
-
-
-                  <div id="example2" class="bal-container-small">
-
-                    <div class="bal-after">
-                      <img src="./static/images/render/of3_gsorb.png">
-                      <div class="bal-afterPosition afterLabel">
-                        Ours
-                      </div>
-                    </div>
-
-                    <div class="bal-before" style="width: 50%;">
-                      <div class="bal-before-inset" style="width: 539px;">
-                        <img src="./static/images/render/of3_splatam.png">
-                        <div class="bal-beforePosition beforeLabel">
-                            SplaTAM
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="bal-handle" style="left: 50%;">
-                      <span class=" handle-left-arrow"></span>
-                      <span class="handle-right-arrow"></span>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--/ Visual Effects. -->
-
-          <!-- Matting. -->
-          <div class="column">
-            <div class="columns is-centered">
-              <div class="column content">
-
-                <div id="example4" class="bal-container-small">
-                  <div class="bal-after">
-                    <img src="./static/images/render/r1_gsorb.png">
-                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
-                      Ours
-                    </div>
-                  </div>
-
-                  <div class="bal-before" style="width:62.10191082802548%;">
-                    <div class="bal-before-inset" style="width: 539px;">
-                      <img src="./static/images/render/r1_splatam.png">
-                      <div class="bal-beforePosition beforeLabel">
-                         SplaTAM
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="bal-handle" style="left:62.10191082802548%;">
-                    <span class=" handle-left-arrow"></span>
-                    <span class="handle-right-arrow"></span>
-                  </div>
-
-                </div>
-
-                <div id="example5" class="bal-container-small">
-                  <div class="bal-after">
-                    <img src="./static/images/render/of4_gsorb.png">
-                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
-                      Ours
-                    </div>
-                  </div>
-
-                  <div class="bal-before" style="width:56.77179962894249%;">
-                    <div class="bal-before-inset" style="width: 628px;">
-                      <img src="./static/images/render/of4_splatam.png">
-                      <div class="bal-beforePosition beforeLabel">
-                        SplaTAM
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="bal-handle" style="left:56.77179962894249%;">
-                    <span class=" handle-left-arrow"></span>
-                    <span class="handle-right-arrow"></span>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-  <script>
-    new BeforeAfter({
-      id: '#example1'
-    });
-    new BeforeAfter({
-      id: '#example2'
-    });
-    new BeforeAfter({
-      id: '#example4'
-    });
-    new BeforeAfter({
-      id: '#example5'
-    });
-
-  </script>
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <div class="content has-text-justified">
-            <img src="./static/images/render/total_render.png">
-            <p>The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM 
-              and 3DGS-SLAM methods on the commonly reported rendering metrics.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section> -->
 
     <section class="section">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full-width">
-          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Tracking Result</h2>
-          <div class="content has-text-justified">
-              <img src="./static/images/tracking/total_tracking.png">
-              <p>The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.</p>
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Overview</h2>
+                    <div class="content has-text-justified">
+                        <img src="./static/images/pipline.png">
+                        <p>
+                            In this paper, we present <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>, a dense SLAM framework that integrates 3DGS with ORB features through a tightly-coupled optimization pipeline.
+                            To address the impact of noise and artifacts, we propose a novel geometric representation and optimization method for tracking, which significantly improves localization accuracy and robustness.
+                            For high-fidelity mapping, we propose an adaptive Gaussian expansion and regularization method, which enables compact yet expressive scene modeling while suppressing redundant primitives.
+                            Furthermore, a hybrid graph-based viewpoint selection mechanism is designed to dynamically balance scene coverage and optimization efficiency, effectively mitigating over-fitting and accelerating convergence.
+                            Extensive evaluations on different datasets demonstrate that our system achieves state-of-the-art performance in both tracking precision (improving RMSE by 16.2\% compared to ORB-SLAM2 baselines) and reconstruction quality (improving PSNR by 3.84 dB compared to 3DGS-SLAM baselines).
 
-              <div class="container is-max-desktop">
-                  <!-- Abstract. -->
-                  <div class="columns is-centered has-text-centered">
-                      <div class="column is-four-fifths">
-                          <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Surface depth VS. Depth</h2>
-                          <div class="content has-text-justified">
-                              <img src="./static/images/tracking/surface_tracking.png">
-                              <p>
-                                  Surface depth not only improves tracking real-time performance but also enhances localization accuracy.
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Video</h2>
+                <div class="publication-video">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/470hul75bSM?si=7F9NL8zWbU9GtqHb"
+                    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+                 encrypted-media; " allowfullscreen></iframe>
 
-                  
+                </div>
               </div>
-          </div>
-      </div>
-    </div>
-  </section>
-
-<!-- 
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            Needs update
-          </p>
-         
+            </div> -->
         </div>
-      </div>
-    </div>
+    </section>
 
-  </div>
-</section> -->
-  
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{yan2023gs,
-  author    = {Yan, Chi and Qu, Delin and Xu, Dan and Zhao, Bin and Wang, Zhigang and Wang, Dong and Li, Xuelong},
-  title     = {GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting},
-  booktitle = {CVPR},
-  year      ={2024},
+
+
+
+    <section class="hero is-small is-light">
+        <div class="hero-body">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Replica Room Sequence Renderings</h2>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Room0 PSNR=35.37</h2>
+                            <video id="ns_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_room0.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Room1 PSNR=37.75</h2>
+                            <video id="ps_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_room1.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Room2 PSNR=38.17</h2>
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_room2.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
+                    </div>
+                </div>
+
+
+    </section>
+
+    <section class="hero is-small is-light">
+        <div class="hero-body">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Replica Office Sequence Renderings</h2>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Office0 PSNR=41.70</h2>
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_office0.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Office2 PSNR=35.76</h2>
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_office2.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Office4 PSNR=36.71</h2>
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/video/render_office4.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
+                    </div>
+                </div>
+
+
+    </section>
+
+
+
+    <section class="section">
+        <div class="container ">
+            <div class=" has-text-centered">
+                <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Render Comparisons</h2>
+                <div class="content has-text-justified">
+                    <p>
+
+                    </p>
+                </div>
+                <div class="columns is-centered">
+                    <!-- Visual Effects. -->
+                    <div class="column">
+                        <div class="content">
+                            <div class="columns is-centered">
+                                <div class="column is-full-width">
+                                    <div id="example1" class="bal-container-small">
+
+                                        <div class="bal-after">
+                                            <img src="./static/images/render/r0_gsorb.png">
+                                            <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                                Ours
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-before" style="width:96.4968152866242%;">
+                                            <div class="bal-before-inset" style="width: 539px;">
+                                                <img src="./static/images/render/r0_splatam.png">
+                                                <div class="bal-beforePosition beforeLabel">
+                                                    SplaTAM
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-handle" style="left:96.4968152866242%;">
+                                            <span class=" handle-left-arrow"></span>
+                                            <span class="handle-right-arrow"></span>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div id="example2" class="bal-container-small">
+
+                                        <div class="bal-after">
+                                            <img src="./static/images/render/r2_gsorb.png">
+                                            <div class="bal-afterPosition afterLabel">
+                                                Ours
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-before" style="width: 50%;">
+                                            <div class="bal-before-inset" style="width: 539px;">
+                                                <img src="./static/images/render/r2_splatam.png">
+                                                <div class="bal-beforePosition beforeLabel">
+                                                    SplaTAM
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-handle" style="left: 50%;">
+                                            <span class=" handle-left-arrow"></span>
+                                            <span class="handle-right-arrow"></span>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="example6" class="bal-container-small">
+                                        <div class="bal-after">
+                                            <img src="./static/images/render/of2_gsorb.png">
+                                            <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                                Ours
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-before" style="width:56.77179962894249%;">
+                                            <div class="bal-before-inset" style="width: 628px;">
+                                                <img src="./static/images/render/of2_splatam.png">
+                                                <div class="bal-beforePosition beforeLabel">
+                                                    SplaTAM
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-handle" style="left:56.77179962894249%;">
+                                            <span class=" handle-left-arrow"></span>
+                                            <span class="handle-right-arrow"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Visual Effects. -->
+                    <!-- Matting. -->
+                    <div class="column">
+                        <div class="columns is-centered">
+                            <div class="column content">
+
+                                <div id="example4" class="bal-container-small">
+                                    <div class="bal-after">
+                                        <img src="./static/images/render/r1_gsorb.png">
+                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                            Ours
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-before" style="width:62.10191082802548%;">
+                                        <div class="bal-before-inset" style="width: 539px;">
+                                            <img src="./static/images/render/r1_splatam.png">
+                                            <div class="bal-beforePosition beforeLabel">
+                                                SplaTAM
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-handle" style="left:62.10191082802548%;">
+                                        <span class=" handle-left-arrow"></span>
+                                        <span class="handle-right-arrow"></span>
+                                    </div>
+
+                                </div>
+
+                                <div id="example5" class="bal-container-small">
+                                    <div class="bal-after">
+                                        <img src="./static/images/render/of3_gsorb.png">
+                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                            Ours
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-before" style="width:56.77179962894249%;">
+                                        <div class="bal-before-inset" style="width: 628px;">
+                                            <img src="./static/images/render/of3_splatam.png">
+                                            <div class="bal-beforePosition beforeLabel">
+                                                SplaTAM
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-handle" style="left:56.77179962894249%;">
+                                        <span class=" handle-left-arrow"></span>
+                                        <span class="handle-right-arrow"></span>
+                                    </div>
+
+                                </div>
+
+                                <div id="example7" class="bal-container-small">
+                                    <div class="bal-after">
+                                        <img src="./static/images/render/of4_gsorb.png">
+                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                            Ours
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-before" style="width:56.77179962894249%;">
+                                        <div class="bal-before-inset" style="width: 628px;">
+                                            <img src="./static/images/render/of4_splatam.png">
+                                            <div class="bal-beforePosition beforeLabel">
+                                                SplaTAM
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-handle" style="left:56.77179962894249%;">
+                                        <span class=" handle-left-arrow"></span>
+                                        <span class="handle-right-arrow"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        new BeforeAfter({
+            id: '#example1'
+        });
+        new BeforeAfter({
+            id: '#example2'
+        });
+        new BeforeAfter({
+            id: '#example4'
+        });
+        new BeforeAfter({
+            id: '#example5'
+        });
+        new BeforeAfter({
+            id: '#example6'
+        });
+        new BeforeAfter({
+            id: '#example7'
+        });
+
+    </script>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <div class="content has-text-justified">
+                        <img src="./static/images/render/total_render.png">
+                        <p>
+                            The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM
+                            and 3DGS-SLAM methods on the commonly reported rendering metrics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-full-width">
+                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Tracking Result</h2>
+                    <div class="content has-text-justified">
+                        <img src="./static/images/tracking/total_tracking.png">
+                        <p>The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.</p>
+
+                        <div class="container is-max-desktop">
+                            <!-- Abstract. -->
+                            <div class="columns is-centered has-text-centered">
+                                <div class="column is-four-fifths">
+                                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Surface depth VS. Depth</h2>
+                                    <div class="content has-text-justified">
+                                        <img src="./static/images/tracking/surface_tracking.png">
+                                        <p>
+                                            Surface depth not only improves tracking real-time performance but also enhances localization accuracy.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!--
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full-width">
+            <h2 class="title is-3">Related Links</h2>
+
+            <div class="content has-text-justified">
+              <p>
+                Needs update
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section> -->
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@inproceedings{1,
+                      author    = {2},
+                      title     = {3},
+                      booktitle = {4},
+                      year      ={5},
 }</code></pre>
-  </div>
-</section>
-
-  <!-- TODO: update the arxiv link and github -->
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <a class="icon-link" href="./static/paper/gs-slam_paper.pdf">
-          <i class="fas fa-file-pdf"></i>
-        </a>
-        <a class="icon-link" href="https://github.com/gs-slam" class="external-link" disabled>
-          <i class="fab fa-github"></i>
-        </a>
-      </div>
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
-            <p>
-              This website is licensed under a <a rel="license"
-                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-                Commons Attribution-ShareAlike 4.0 International License</a>.
-            </p>
-            <p>
-              This means you are free to borrow the <a href="https://github.com/gs-slam/gs-slam.github.io">source
-                code</a> of this website,
-              we just ask that you link back to this page in the footer.
-              Please remember to remove the analytics code included in the header of the website which
-              you do not want on your website.
-            </p>
-          </div>
         </div>
-      </div>
-    </div>
-  </footer>
+    </section>
+
+    <!-- TODO: update the arxiv link and github -->
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="./static/paper/gsorb-slam_paper.pdf">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/gs-slam" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                                                href="http://creativecommons.org/licenses/by-sa/4.0/">
+                                Creative
+                                Commons Attribution-ShareAlike 4.0 International License
+                            </a>.
+                        </p>
+                        <p>
+                            This means you are free to borrow the <a href="">
+                                source
+                                code
+                            </a> of this website,
+                            we just ask that you link back to this page in the footer.
+                            Please remember to remove the analytics code included in the header of the website which
+                            you do not want on your website.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
