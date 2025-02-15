@@ -111,7 +111,7 @@
                             <span class="author-block">
                                 Libo Zhou</a>,
                             </span>
-                            
+
                         </div>
 
                         <div class="is-size-5 publication-authors">
@@ -306,7 +306,7 @@
                         <div class="content">
                             <h2 class="title is-5">Room0 PSNR=35.37</h2>
                             <video id="ns_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_room0.mp4"
+                                <source src="./static/video/single/render_room0.mp4"
                                         type="video/mp4">
                             </video>
                         </div>
@@ -316,7 +316,7 @@
                         <div class="content">
                             <h2 class="title is-5">Room1 PSNR=37.75</h2>
                             <video id="ps_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_room1.mp4"
+                                <source src="./static/video/single/render_room1.mp4"
                                         type="video/mp4">
                             </video>
                             <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
@@ -327,7 +327,7 @@
                         <div class="content">
                             <h2 class="title is-5">Room2 PSNR=38.17</h2>
                             <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_room2.mp4"
+                                <source src="./static/video/single/render_room2.mp4"
                                         type="video/mp4">
                             </video>
                             <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
@@ -354,7 +354,7 @@
                         <div class="content">
                             <h2 class="title is-5">Office0 PSNR=41.70</h2>
                             <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_office0.mp4"
+                                <source src="./static/video/single/render_office0.mp4"
                                         type="video/mp4">
                             </video>
                             <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
@@ -365,7 +365,7 @@
                         <div class="content">
                             <h2 class="title is-5">Office2 PSNR=35.76</h2>
                             <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_office2.mp4"
+                                <source src="./static/video/single/render_office2.mp4"
                                         type="video/mp4">
                             </video>
                             <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
@@ -376,7 +376,7 @@
                         <div class="content">
                             <h2 class="title is-5">Office4 PSNR=36.71</h2>
                             <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
-                                <source src="./static/video/render_office4.mp4"
+                                <source src="./static/video/single/render_office4.mp4"
                                         type="video/mp4">
                             </video>
                             <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
@@ -399,12 +399,66 @@
                     </p>
                 </div>
                 <div class="columns is-centered">
+
                     <!-- Visual Effects. -->
                     <div class="column">
                         <div class="content">
                             <div class="columns is-centered">
                                 <div class="column is-full-width">
+
                                     <div id="example1" class="bal-container-small">
+                                        <div class="bal-after">
+                                            <video src="./static/video/two/render_r0_gsorb.mp4" autoplay loop muted></video>
+                                            <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                                Ours
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-before" style="width:56.77179962894249%;">
+                                            <div class="bal-before-inset" style="width: 628px;">
+                                                <video src="./static/video/two/render_r0_photoslam.mp4" autoplay loop muted></video>
+                                                <div class="bal-beforePosition beforeLabel">
+                                                    Photo-SLAM
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-handle" style="left:56.77179962894249%;">
+                                            <span class=" handle-left-arrow"></span>
+                                            <span class="handle-right-arrow"></span>
+                                        </div>
+
+                                    </div>
+
+                                    <div id="example3" class="bal-container-small">
+                                        <div class="bal-after">
+                                            <video src="./static/video/two/render_of2_gsorb.mp4" autoplay loop muted></video>
+                                            <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                                Ours
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-before" style="width:56.77179962894249%;">
+                                            <div class="bal-before-inset" style="width: 628px;">
+                                                <video src="./static/video/two/render_of2_photoslam.mp4" autoplay loop muted></video>
+                                                <div class="bal-beforePosition beforeLabel">
+                                                    Photo-SLAM
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="bal-handle" style="left:56.77179962894249%;">
+                                            <span class=" handle-left-arrow"></span>
+                                            <span class="handle-right-arrow"></span>
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                    <div id="example5" class="bal-container-small">
 
                                         <div class="bal-after">
                                             <img src="./static/images/render/r0_gsorb.png">
@@ -430,32 +484,7 @@
                                     </div>
 
 
-                                    <div id="example2" class="bal-container-small">
-
-                                        <div class="bal-after">
-                                            <img src="./static/images/render/r2_gsorb.png">
-                                            <div class="bal-afterPosition afterLabel">
-                                                Ours
-                                            </div>
-                                        </div>
-
-                                        <div class="bal-before" style="width: 50%;">
-                                            <div class="bal-before-inset" style="width: 539px;">
-                                                <img src="./static/images/render/r2_splatam.png">
-                                                <div class="bal-beforePosition beforeLabel">
-                                                    SplaTAM
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="bal-handle" style="left: 50%;">
-                                            <span class=" handle-left-arrow"></span>
-                                            <span class="handle-right-arrow"></span>
-                                        </div>
-
-                                    </div>
-
-                                    <div id="example6" class="bal-container-small">
+                                    <div id="example7" class="bal-container-small">
                                         <div class="bal-after">
                                             <img src="./static/images/render/of2_gsorb.png">
                                             <div class="bal-afterPosition afterLabel" style="z-index:1;">
@@ -478,6 +507,8 @@
                                         </div>
 
                                     </div>
+
+
                                 </div>
                             </div>
                         </div>
@@ -488,7 +519,55 @@
                         <div class="columns is-centered">
                             <div class="column content">
 
+                                <div id="example2" class="bal-container-small">
+                                    <div class="bal-after">
+                                        <video src="./static/video/two/render_r1_gsorb.mp4" autoplay loop muted></video>
+                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                            Ours
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-before" style="width:56.77179962894249%;">
+                                        <div class="bal-before-inset" style="width: 628px;">
+                                            <video src="./static/video/two/render_r1_photoslam.mp4" autoplay loop muted></video>
+                                            <div class="bal-beforePosition beforeLabel">
+                                                Photo-SLAM
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-handle" style="left:56.77179962894249%;">
+                                        <span class=" handle-left-arrow"></span>
+                                        <span class="handle-right-arrow"></span>
+                                    </div>
+
+                                </div>
+
                                 <div id="example4" class="bal-container-small">
+                                    <div class="bal-after">
+                                        <video src="./static/video/two/render_of0_gsorb.mp4" autoplay loop muted></video>
+                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                            Ours
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-before" style="width:56.77179962894249%;">
+                                        <div class="bal-before-inset" style="width: 628px;">
+                                            <video src="./static/video/two/render_of0_photoslam.mp4" autoplay loop muted></video>
+                                            <div class="bal-beforePosition beforeLabel">
+                                                Photo-SLAM
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="bal-handle" style="left:56.77179962894249%;">
+                                        <span class=" handle-left-arrow"></span>
+                                        <span class="handle-right-arrow"></span>
+                                    </div>
+
+                                </div>
+
+                                <div id="example6" class="bal-container-small">
                                     <div class="bal-after">
                                         <img src="./static/images/render/r1_gsorb.png">
                                         <div class="bal-afterPosition afterLabel" style="z-index:1;">
@@ -512,31 +591,7 @@
 
                                 </div>
 
-                                <div id="example5" class="bal-container-small">
-                                    <div class="bal-after">
-                                        <img src="./static/images/render/of3_gsorb.png">
-                                        <div class="bal-afterPosition afterLabel" style="z-index:1;">
-                                            Ours
-                                        </div>
-                                    </div>
-
-                                    <div class="bal-before" style="width:56.77179962894249%;">
-                                        <div class="bal-before-inset" style="width: 628px;">
-                                            <img src="./static/images/render/of3_splatam.png">
-                                            <div class="bal-beforePosition beforeLabel">
-                                                SplaTAM
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="bal-handle" style="left:56.77179962894249%;">
-                                        <span class=" handle-left-arrow"></span>
-                                        <span class="handle-right-arrow"></span>
-                                    </div>
-
-                                </div>
-
-                                <div id="example7" class="bal-container-small">
+                                <div id="example8" class="bal-container-small">
                                     <div class="bal-after">
                                         <img src="./static/images/render/of4_gsorb.png">
                                         <div class="bal-afterPosition afterLabel" style="z-index:1;">
@@ -563,7 +618,7 @@
                         </div>
                     </div>
 
-                    
+
 
                 </div>
             </div>
@@ -580,6 +635,9 @@
             id: '#example2'
         });
         new BeforeAfter({
+            id: '#example3'
+        });
+        new BeforeAfter({
             id: '#example4'
         });
         new BeforeAfter({
@@ -590,6 +648,9 @@
         });
         new BeforeAfter({
             id: '#example7'
+        });
+        new BeforeAfter({
+            id: '#example8'
         });
 
     </script>
@@ -658,6 +719,14 @@
 
       </div>
     </section> -->
+    <section class="section" id="Acknowledge">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Acknowledge</h2>
+            <a href="https://gs-slam.github.io/"><sup>[1]</sup>GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</a><br>
+            <a href="https://spla-tam.github.io/"><sup>[2]</sup>SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM</a><br>
+            <a href="https://github.com/raulmur/ORB_SLAM2"><sup>[3]</sup>Orb-slam2: An open-source slam system for monocular, stereo, and rgb-d cameras</a>
+        </div>
+    </section>
 
     <section class="section" id="BibTeX">
         <div class="container is-max-desktop content">
@@ -692,15 +761,15 @@
                                 Commons Attribution-ShareAlike 4.0 International License
                             </a>.
                         </p>
-                        <p>
-                            This means you are free to borrow the <a href="">
+                        <!--<p>
+                            This means you are free to borrow the <a href="https://github.com/WanCai-ac/gsorb-slam.github.io.git">
                                 source
                                 code
                             </a> of this website,
                             we just ask that you link back to this page in the footer.
                             Please remember to remove the analytics code included in the header of the website which
                             you do not want on your website.
-                        </p>
+                        </p>-->
                     </div>
                 </div>
             </div>
@@ -709,4 +778,4 @@
 
 </body>
 
-</html>
+    </html>
