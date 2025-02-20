@@ -91,7 +91,7 @@
                         <h1 class="title is-1 publication-title">
                             <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>: Gaussian Splatting SLAM benefits from ORB features and Transmittance information
                         </h1>
-                        <h3 class="title is-4 conference-authors"><a target="_blank" href="https://cvpr.thecvf.com/">--</a></h3>
+                       
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
                                 Wancai Zheng</a>,
@@ -123,7 +123,7 @@
                             <!-- <div class="publication-links"> -->
                             <!-- PDF Link. -->
                             <span class="link-block">
-                                <a href="https://arxiv.org/pdf/2311.11700.pdf"
+                                <a href=""
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fas fa-file-pdf"></i>
@@ -160,7 +160,7 @@
                             </span> -->
                             <!-- Code Link. -->
                             <span class="link-block">
-                                <a href="https://github.com/NPU-YanChi/diff-gaussian-rasterization-for-gsslam"
+                                <a href="https://github.com/Aczheng-cai/GSORB-SLAM"
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fab fa-github"></i>
@@ -257,16 +257,13 @@
             <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-four-fifths">
-                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Overview</h2>
+                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Overview</h2>
                     <div class="content has-text-justified">
                         <img src="./static/images/pipline.png">
                         <p>
-                            In this paper, we present <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>, a dense SLAM framework that integrates 3DGS with ORB features through a tightly-coupled optimization pipeline.
-                            To address the impact of noise and artifacts, we propose a novel geometric representation and optimization method for tracking, which significantly improves localization accuracy and robustness.
-                            For high-fidelity mapping, we propose an adaptive Gaussian expansion and regularization method, which enables compact yet expressive scene modeling while suppressing redundant primitives.
-                            Furthermore, a hybrid graph-based viewpoint selection mechanism is designed to dynamically balance scene coverage and optimization efficiency, effectively mitigating over-fitting and accelerating convergence.
-                            Extensive evaluations on different datasets demonstrate that our system achieves state-of-the-art performance in both tracking precision (improving RMSE by 16.2\% compared to ORB-SLAM2 baselines) and reconstruction quality (improving PSNR by 3.84 dB compared to 3DGS-SLAM baselines).
-
+                            
+                            In this paper, we propose <span style="color: #0bfb42;font-weight: bolder;">GSORB-SLAM</span>, a dense SLAM framework that integrates 3DGS with ORB features through a tightly coupled optimization pipeline. To mitigate the effects of noise and artifacts, we propose a novel geometric representation and optimization method for tracking, which significantly enhances localization accuracy and robustness. For high-fidelity mapping, we propose an adaptive Gaussian expansion and regularization method that facilitates compact yet expressive scene modeling while suppressing redundant primitives. 
+Furthermore, we design a hybrid graph-based viewpoint selection mechanism that effectively mitigates overfitting and accelerates convergence. Extensive evaluations across various datasets demonstrate that our system achieves state-of-the-art performance in both tracking precision—improving RMSE by 16.2% compared to ORB-SLAM2 baselines—and reconstruction quality—improving PSNR by 3.93 dB compared to 3DGS-SLAM baselines.
                         </p>
                     </div>
                 </div>
@@ -294,7 +291,8 @@
         <div class="hero-body">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Replica Room Sequence Renderings</h2>
+                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Replica Room Sequence Renderings</h2>
+
                     <p></p>
                 </div>
             </div>
@@ -305,7 +303,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Room0 PSNR=35.37</h2>
-                            <video id="ns_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ns_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_room0.mp4"
                                         type="video/mp4">
                             </video>
@@ -315,7 +313,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Room1 PSNR=37.75</h2>
-                            <video id="ps_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ps_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_room1.mp4"
                                         type="video/mp4">
                             </video>
@@ -326,7 +324,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Room2 PSNR=38.17</h2>
-                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_room2.mp4"
                                         type="video/mp4">
                             </video>
@@ -342,7 +340,7 @@
         <div class="hero-body">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Replica Office Sequence Renderings</h2>
+                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Replica Office Sequence Renderings</h2>
                     <p></p>
                 </div>
             </div>
@@ -353,7 +351,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Office0 PSNR=41.70</h2>
-                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_office0.mp4"
                                         type="video/mp4">
                             </video>
@@ -364,7 +362,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Office2 PSNR=35.76</h2>
-                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_office2.mp4"
                                         type="video/mp4">
                             </video>
@@ -375,7 +373,7 @@
                     <div class="column has-text-centered">
                         <div class="content">
                             <h2 class="title is-5">Office4 PSNR=36.71</h2>
-                            <video id="ss_r0" autoplay controls muted loop playsinline height="100%">
+                            <video id="ss_r0" autoplay controls muted loop playsinline height="150%">
                                 <source src="./static/video/single/render_office4.mp4"
                                         type="video/mp4">
                             </video>
@@ -392,7 +390,7 @@
     <section class="section">
         <div class="container ">
             <div class=" has-text-centered">
-                <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Render Comparisons</h2>
+                <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Render Comparisons</h2>
                 <div class="content has-text-justified">
                     <p>
 
@@ -655,36 +653,76 @@
 
     </script>
 
-    <section class="section">
-        <div class="container is-max-desktop">
+    <section class="hero is-small is-light">
+        <div class="hero-body">
             <div class="columns is-centered has-text-centered">
-                <div class="column is-full-width">
-                    <div class="content has-text-justified">
-                        <img src="./static/images/render/total_render.png">
-                        <p>
-                            The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM
-                            and 3DGS-SLAM methods on the commonly reported rendering metrics.
-                        </p>
+                <div class="column">
+                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Myself dataset</h2>
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Training</h2>
+                            <video id="ns_my" autoplay controls muted loop playsinline width="375"  >
+                                <source src="./static/video/mydata/train_mydata.mp4"
+                                        type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="content">
+                            <h2 class="title is-5">Rendering</h2>
+                            <video id="ps_my" autoplay controls muted loop playsinline width="400" >
+                                <source src="./static/video/mydata/render_mydata.mp4"
+                                        type="video/mp4">
+                            </video>
+                            <!-- <img src = "data/viz_gifs/row3_col3.gif"> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
     </section>
+
 
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column is-full-width">
-                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Tracking Result</h2>
+                   
+                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Rendering result</h2>
                     <div class="content has-text-justified">
-                        <img src="./static/images/tracking/total_tracking.png">
-                        <p>The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.</p>
+                        <img src="./static/images/render/total_render.png">
+                        <p> The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM
+                                                and 3DGS-SLAM methods on the commonly reported rendering metrics.</p>
+
+
+
+                        <div class="columns is-centered has-text-centered">
+                                <div class="column is-four-fifths">
+                                     <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Tracking Result</h2>
+                                    <div class="content has-text-justified">
+                                    <img src="./static/images/tracking/total_tracking.png">
+                                        
+                                        <p>
+                                            
+                                                The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
 
                         <div class="container is-max-desktop">
                             <!-- Abstract. -->
                             <div class="columns is-centered has-text-centered">
                                 <div class="column is-four-fifths">
-                                    <h2 class="title is-3" style="color: #e25757;font-weight: bolder;">Surface depth VS. Depth</h2>
+                                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Surface depth VS. Depth</h2>
                                     <div class="content has-text-justified">
                                         <img src="./static/images/tracking/surface_tracking.png">
                                         <p>
@@ -693,6 +731,8 @@
                                     </div>
                                 </div>
                             </div>
+
+                            
 
 
                         </div>
