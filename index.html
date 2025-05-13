@@ -403,7 +403,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                     <div id="example1" class="bal-container-small">
                                         <div class="bal-after">
-                                            <video src="./static/video/two/render_r0_gsorb.mp4" autoplay loop muted></video>
+                                            <video src="./static/video/two/render_r0_gsorb.mp4" loop muted class="comparison-video" data-group="1"></video>
                                             <div class="bal-afterPosition afterLabel" style="z-index:1;">
                                                 Ours
                                             </div>
@@ -411,7 +411,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                         <div class="bal-before" style="width:56.77179962894249%;">
                                             <div class="bal-before-inset" style="width: 628px;">
-                                                <video src="./static/video/two/render_r0_photoslam.mp4" autoplay loop muted></video>
+                                                <video src="./static/video/two/render_r0_photoslam.mp4" loop muted class="comparison-video" data-group="1"></video>
                                                 <div class="bal-beforePosition beforeLabel">
                                                     Photo-SLAM
                                                 </div>
@@ -427,7 +427,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                     <div id="example3" class="bal-container-small">
                                         <div class="bal-after">
-                                            <video src="./static/video/two/render_of2_gsorb.mp4" autoplay loop muted></video>
+                                            <video src="./static/video/two/render_of2_gsorb.mp4" loop muted class="comparison-video" data-group="2"></video>
                                             <div class="bal-afterPosition afterLabel" style="z-index:1;">
                                                 Ours
                                             </div>
@@ -435,7 +435,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                         <div class="bal-before" style="width:56.77179962894249%;">
                                             <div class="bal-before-inset" style="width: 628px;">
-                                                <video src="./static/video/two/render_of2_photoslam.mp4" autoplay loop muted></video>
+                                                <video src="./static/video/two/render_of2_photoslam.mp4" loop muted class="comparison-video" data-group="2"></video>
                                                 <div class="bal-beforePosition beforeLabel">
                                                     Photo-SLAM
                                                 </div>
@@ -516,7 +516,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                 <div id="example2" class="bal-container-small">
                                     <div class="bal-after">
-                                        <video src="./static/video/two/render_r1_gsorb.mp4" autoplay loop muted></video>
+                                        <video src="./static/video/two/render_r1_gsorb.mp4" loop muted class="comparison-video" data-group="3"></video>
                                         <div class="bal-afterPosition afterLabel" style="z-index:1;">
                                             Ours
                                         </div>
@@ -524,7 +524,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                     <div class="bal-before" style="width:56.77179962894249%;">
                                         <div class="bal-before-inset" style="width: 628px;">
-                                            <video src="./static/video/two/render_r1_photoslam.mp4" autoplay loop muted></video>
+                                            <video src="./static/video/two/render_r1_photoslam.mp4" loop muted class="comparison-video" data-group="3"></video>
                                             <div class="bal-beforePosition beforeLabel">
                                                 Photo-SLAM
                                             </div>
@@ -540,7 +540,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                 <div id="example4" class="bal-container-small">
                                     <div class="bal-after">
-                                        <video src="./static/video/two/render_of0_gsorb.mp4" autoplay loop muted></video>
+                                        <video src="./static/video/two/render_of0_gsorb.mp4" loop muted class="comparison-video" data-group="4"></video>
                                         <div class="bal-afterPosition afterLabel" style="z-index:1;">
                                             Ours
                                         </div>
@@ -548,7 +548,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
                                     <div class="bal-before" style="width:56.77179962894249%;">
                                         <div class="bal-before-inset" style="width: 628px;">
-                                            <video src="./static/video/two/render_of0_photoslam.mp4" autoplay loop muted></video>
+                                            <video src="./static/video/two/render_of0_photoslam.mp4" loop muted class="comparison-video" data-group="4"></video>
                                             <div class="bal-beforePosition beforeLabel">
                                                 Photo-SLAM
                                             </div>
@@ -623,6 +623,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
 
     <script>
+        // 初始化BeforeAfter组件
         new BeforeAfter({
             id: '#example1'
         });
@@ -648,6 +649,58 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
             id: '#example8'
         });
 
+        // 等待所有视频加载完成后统一播放
+        document.addEventListener('DOMContentLoaded', function() {
+            // 按组分类视频
+            const videoGroups = {};
+            document.querySelectorAll('.comparison-video').forEach(video => {
+                const group = video.dataset.group;
+                if (!videoGroups[group]) {
+                    videoGroups[group] = [];
+                }
+                videoGroups[group].push(video);
+                
+                // 设置加载事件
+                video.addEventListener('loadeddata', function() {
+                    checkGroupLoaded(group);
+                });
+                
+                // 如果视频已经加载完成
+                if (video.readyState >= 3) {
+                    checkGroupLoaded(group);
+                }
+            });
+            
+            // 检查每组视频是否都加载完成
+            function checkGroupLoaded(group) {
+                const videos = videoGroups[group];
+                const allLoaded = videos.every(v => v.readyState >= 3);
+                
+                if (allLoaded) {
+                    // 所有视频都加载完成，开始播放
+                    videos.forEach(v => {
+                        v.play();
+                    });
+                }
+            }
+            
+            // 处理视频暂停和播放的同步
+            document.querySelectorAll('.comparison-video').forEach(video => {
+                video.addEventListener('pause', function() {
+                    const group = this.dataset.group;
+                    videoGroups[group].forEach(v => {
+                        if (v !== this) v.pause();
+                    });
+                });
+                
+                video.addEventListener('play', function() {
+                    const group = this.dataset.group;
+                    videoGroups[group].forEach(v => {
+                        if (v !== this) v.play();
+                    });
+                });
+            });
+        });
     </script>
 
     <section class="hero is-small is-light">
