@@ -623,50 +623,25 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
 
     <script>
-        // // 初始化BeforeAfter组件
-        // new BeforeAfter({
-        //     id: '#example1'
-        // });
-        // new BeforeAfter({
-        //     id: '#example2'
-        // });
-        // new BeforeAfter({
-        //     id: '#example3'
-        // });
-        // new BeforeAfter({
-        //     id: '#example4'
-        // });
-        // new BeforeAfter({
-        //     id: '#example5'
-        // });
-        // new BeforeAfter({
-        //     id: '#example6'
-        // });
-        // new BeforeAfter({
-        //     id: '#example7'
-        // });
-        // new BeforeAfter({
-        //     id: '#example8'
-        // });
-
+        
         document.addEventListener('DOMContentLoaded', () => {
-  // 1. 找到所有对比视频
+
   const videos = Array.from(document.querySelectorAll('.comparison-video'));
 
-  // 2. 为每个视频创建一个 Promise，等它触发 canplaythrough（可流畅播放）时 resolve
+
   const loadPromises = videos.map(video => {
     return new Promise(resolve => {
-      // 一旦浏览器认为已经缓冲到可以不间断播放，就认为“加载完成”
+
       video.addEventListener('canplaythrough', () => resolve(video), { once: true });
     });
   });
 
-  // 3. 全部视频都准备好后，一次性播放
+
   Promise.all(loadPromises).then(videosReady => {
     videosReady.forEach(v => v.play());
   });
 
-  // 4. 如果需要，还可以保持组内暂停/播放同步
+
   const videoGroups = videos.reduce((groups, v) => {
     const g = v.dataset.group;
     groups[g] = groups[g] || [];
@@ -682,19 +657,12 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
       videoGroups[video.dataset.group].forEach(v => v !== video && v.play());
     });
   });
+  for (let i = 1; i <= 8; i++) {
+        new BeforeAfter({ id: `#example${i}` });
+      }
 });
     </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // …（如前所述的 canplaythrough + Promise.all + play + 同步逻辑）…
-    
-      // 初始化 BeforeAfter 对比组件
-      for (let i = 1; i <= 8; i++) {
-        new BeforeAfter({ id: `#example${i}` });
-      }
-    });
-    </script>
 
     <section class="hero is-small is-light">
         <div class="hero-body">
