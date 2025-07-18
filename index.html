@@ -91,7 +91,11 @@
                         <h1 class="title is-1 publication-title">
                              <span style="color: #00FFFF;font-weight: bolder;">GS</span><span style="color: #0099FF;font-weight: bolder;">ORB</span><span style="color: #0033FF;font-weight: bolder;">-SLAM</span>: Gaussian Splatting SLAM benefits from ORB features and Transmittance information
                         </h1>
-                       
+                        <!-- <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <strong>🎉 RAL2025</strong>
+                            </span>
+                        </div> -->
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
                                 Wancai Zheng</a>,
@@ -122,24 +126,24 @@
                         <div class="column has-text-centered">
                             <!-- <div class="publication-links"> -->
                             <!-- PDF Link. -->
-                            <span class="link-block">
-                                <a href="https://arxiv.org/abs/2410.11356"
+                            <!-- <span class="link-block">
+                                <a href=""
                                    class="external-link button is-normal is-rounded is-dark">
                                     <span class="icon">
                                         <i class="fas fa-file-pdf"></i>
                                     </span>
                                     <span>Paper</span>
                                 </a>
-                            </span>
-                            <!-- <span class="link-block">
-                              <a href="https://arxiv.org/abs/2311.11700"
+                            </span> -->
+                            <span class="link-block">
+                              <a href="https://arxiv.org/abs/2410.11356"
                                  class="external-link button is-normal is-rounded is-dark">
                                 <span class="icon">
                                     <i class="ai ai-arxiv"></i>
                                 </span>
                                 <span>arXiv</span>
                               </a>
-                            </span> -->
+                            </span>
                             <!-- Video Link.
                             <span class="link-block">
                               <a href="https://youtu.be/470hul75bSM" class="external-link button is-normal is-rounded is-dark">
@@ -177,80 +181,6 @@
         </div>
     </section>
 
-    <!-- <section class="hero teaser">
-      <div class="container is-max-desktop">
-        <div class="hero-body">
-          <video id="teaser" autoplay muted loop playsinline height="100%">
-            <source src="./static/videos/teaser.mp4"
-                    type="video/mp4">
-          </video>
-          <h2 class="subtitle has-text-centered">
-            <span class="dnerf">Nerfies</span> turns selfie videos from your phone into
-            free-viewpoint
-            portraits.
-          </h2>
-        </div>
-      </div>
-    </section> -->
-    <!-- <section class="hero is-light is-small">
-      <div class="hero-body">
-        <div class="container">
-          <div id="results-carousel" class=" carousel results-carousel">
-            <div class="item item-room">
-              <video poster="" id="room" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/room_video_comp3.mp4"
-                        type="video/mp4">
-              </video>
-            </div>
-
-            <div class="item item-garden">
-              <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/garden_video_comp3.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-bicycle">
-              <video poster="" id="bicycle" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/bicycle_video_comp3.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-bonsai">
-              <video poster="" id="bonsai" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/bonsai_video_comp3.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-counter">
-              <video poster="" id="counter" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/counter_video_comp3.mp4" type="video/mp4">
-              </video>
-            </div>
-            <div class="item item-kitchen">
-              <video poster="" id="kitchen" autoplay controls muted loop playsinline height="100%">
-                <source src="./static/videos/kitchen_video_comp3.mp4" type="video/mp4">
-              </video>
-            </div>
-          <div class="item item-train">
-            <video poster="" id="train" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/train_video_comp3.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-struck">
-            <video poster="" id="toby" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/truck_video_comp3.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          <div class="item item-stump">
-            <video poster="" id="stump" autoplay controls muted loop playsinline height="100%">
-              <source src="./static/videos/stump_video_comp3.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-          </div>
-          <p>The caption displays both the file size and the Structural Similarity Index (SSIM)</p>
-        </div>
-      </div>
-    </section> -->
 
     <section class="section">
         <div class="container is-max-desktop">
@@ -261,9 +191,11 @@
                     <div class="content has-text-justified">
                         <img src="./static/images/pipline.png">
                         <p>
-                            
-                            In this paper, we propose  <span style="color: #00FFFF;font-weight: bolder;">GS</span><span style="color: #0099FF;font-weight: bolder;">ORB</span><span style="color: #0033FF;font-weight: bolder;">-SLAM</span>, a dense SLAM framework that integrates 3DGS with ORB features through a tightly coupled optimization pipeline. To mitigate the effects of noise and artifacts, we propose a novel geometric representation and optimization method for tracking, which significantly enhances localization accuracy and robustness. For high-fidelity mapping, we propose an adaptive Gaussian expansion and regularization method that facilitates compact yet expressive scene modeling while suppressing redundant primitives. 
-Furthermore, we design a hybrid graph-based viewpoint selection mechanism that effectively mitigates overfitting and accelerates convergence. Extensive evaluations across various datasets demonstrate that our system achieves state-of-the-art performance in both tracking precision—improving RMSE by 16.2% compared to ORB-SLAM2 baselines—and reconstruction quality—improving PSNR by 3.93 dB compared to 3DGS-SLAM baselines.
+                            The emergence of 3D Gaussian Splatting (3DGS) has recently ignited a renewed wave of research in dense visual SLAM. However, existing approaches encounter challenges, including sensitivity to artifacts and noise, suboptimal selection of training viewpoints, and the absence of global optimization. 
+                            In this paper, we propose <span style="color: #00FFFF;font-weight: bolder;">GS</span><span style="color: #0099FF;font-weight: bolder;">ORB</span><span style="color: #0033FF;font-weight: bolder;">-SLAM</span>, a dense SLAM framework that integrates 3DGS with ORB features through a tightly coupled optimization pipeline. To mitigate the effects of noise and artifacts, we propose a novel geometric representation and optimization method for tracking, which significantly enhances localization accuracy and robustness. For high-fidelity mapping, we develop an adaptive Gaussian expansion and regularization method that facilitates compact yet expressive scene modeling while suppressing redundant primitives. 
+                            Furthermore, we design a hybrid graph-based viewpoint selection mechanism that effectively reduces overfitting and accelerates convergence. Extensive evaluations across various datasets demonstrate that our system achieves state-of-the-art performance in both tracking precision and rendering quality. 
+
+
                         </p>
                     </div>
                 </div>
@@ -283,6 +215,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
             </div> -->
         </div>
     </section>
+
 
 
 
@@ -701,56 +634,7 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
 
     </section>
 
-
-    <section class="section">
-        <div class="container is-max-desktop">
-            <div class="columns is-centered has-text-centered">
-                <div class="column is-full-width">
-                   
-                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Rendering result</h2>
-                    <div class="content has-text-justified">
-                        <img src="./static/images/render/total_render.png">
-                        <p> The results on the Replica and TUM RGB-D datasets show that our approach outperforms existing dense neural SLAM
-                                                and 3DGS-SLAM methods on the commonly reported rendering metrics.</p>
-
-
-
-                        <div class="columns is-centered has-text-centered">
-                                <div class="column is-four-fifths">
-                                     <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Tracking Result</h2>
-                                    <div class="content has-text-justified">
-                                    <img src="./static/images/tracking/total_tracking.png">
-                                        
-                                        <p>
-                                            
-                                                The best results will be highlighted in red, while the second-best will be highlighted in blue. The result is the average of six times data.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        <div class="container is-max-desktop">
-                            <!-- Abstract. -->
-                            <div class="columns is-centered has-text-centered">
-                                <div class="column is-four-fifths">
-                                    <h2 class="title is-3" style="color: #9b87f2;font-weight: bolder;">Surface depth VS. Depth</h2>
-                                    <div class="content has-text-justified">
-                                        <img src="./static/images/tracking/surface_tracking.png">
-                                        <p>
-                                            Surface depth not only improves tracking real-time performance but also enhances localization accuracy.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
+   
 
     <!--
     <section class="section">
@@ -773,9 +657,11 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
     <section class="section" id="Acknowledge">
         <div class="container is-max-desktop content">
             <h2 class="title">Acknowledge</h2>
-            <a href="https://gs-slam.github.io/"><sup>[1]</sup>GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</a><br>
-            <a href="https://spla-tam.github.io/"><sup>[2]</sup>SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM</a><br>
-            <a href="https://github.com/raulmur/ORB_SLAM2"><sup>[3]</sup>Orb-slam2: An open-source slam system for monocular, stereo, and rgb-d cameras</a>
+            <a href="https://gs-slam.github.io/">GS-SLAM: Dense Visual SLAM with 3D Gaussian Splatting</a><br>
+            <a href="https://spla-tam.github.io/">SplaTAM: Splat, Track & Map 3D Gaussians for Dense RGB-D SLAM</a><br>
+            <a href="https://github.com/raulmur/ORB_SLAM2">Orb-slam2: An open-source slam system for monocular, stereo, and rgb-d cameras</a><br>
+            <a href="https://huajianup.github.io/research/Photo-SLAM/">Photo-SLAM: Real-time Simultaneous Localization and Photorealistic Mapping for Monocular, Stereo, and RGB-D Cameras</a>
+            
         </div>
     </section>
 
@@ -812,9 +698,10 @@ Furthermore, we design a hybrid graph-based viewpoint selection mechanism that e
                         <p>
                             This website is licensed under a <a rel="license"
                                                                 href="http://creativecommons.org/licenses/by-sa/4.0/">
-                                Creative
-                                Commons Attribution-ShareAlike 4.0 International License
-                            </a>.
+                                Creative Commons Attribution-ShareAlike 4.0 International License.</a>
+                                This webpage template is from <a rel="GS-SLAM"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">GS-SLAM.</a> We sincerely thank Chi Yan for developing and open-sourcing this template.
+                            .
                         </p>
                         <!--<p>
                             This means you are free to borrow the <a href="https://github.com/WanCai-ac/gsorb-slam.github.io.git">
